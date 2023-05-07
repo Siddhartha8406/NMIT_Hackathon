@@ -1,0 +1,131 @@
+{% load static %}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+            margin: 0%;
+            background-color: #d0e2eb98;
+        }
+
+        #main_heading {
+            background-color: #186d9898;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 300%;
+            margin-bottom: 10px;
+        }
+
+        #tiles_div {
+            width: 100%;
+            height: 100%;
+            flex-wrap: wrap;
+            text-align: center;
+            justify-content: center;
+            font-size: 200%;
+            background-color: #358cb832;
+            margin-right: 50px;
+            padding-top: 10px;
+        }
+
+        .tile {
+            text-align: center;
+            background: rgb(124, 163, 163);
+            display: inline-block;
+            position: relative;
+            padding: 10px;
+            margin: 3%;
+            border-radius: 15px;
+        }
+
+
+        /* Sidenav Bar */
+        #sidenav_menu{
+            position: fixed;
+            left: 10;
+            top: 10;
+            width: 3%;
+            padding: 5px;
+            border-radius: 10%;
+        }
+
+        #mySidenav{
+            width: 0;
+            min-height: 100vh;
+            height: 100%;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #2C74B3;
+            overflow-x: hidden;
+            transition: 0.5s;
+        }
+        .sidenav a{
+            padding: 15px 0px 15px 0px;
+            display: block;
+            font-size: 250%;
+            width: 100%;
+            color: #555757;
+            transition: 0.3s;
+            text-decoration: none;
+            margin-left: 7px;
+        }
+        .sideNav a:hover{
+            color: rgb(219, 216, 216);
+        }
+        .aSidenav{
+            text-align: center;
+            font-size: 50px;
+        }
+
+
+
+
+        @media screen and (max-height: 850px) {
+            #main_heading {font-size: 200%;}
+            #tiles_div{font-size: 180%;}
+        }
+    </style>
+
+    <script>
+        function showNav() {
+        document.getElementById("mySidenav").style.width = "100%";
+        }
+
+        function hideNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        }
+        
+    </script>
+</head>
+
+<body>
+    <img src="{% static 'icons/menu.png' %}" id="sidenav_menu" onclick="showNav()">
+    <h2 id="main_heading">Teacher Contact</h2>
+    <div id="tiles_div">
+        {% if user%}
+            {% for teacher in user %}
+                <div class="tile">
+                    <div class="tile_name">{{ teacher.staff_name }}</div>
+                    <div class="tile_email">{{ teacher.staff_email }}</div>
+                    <div class="tile_phone">+91 {{ teacher.staff_PhoneNo }}</div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" id="closebtn" onclick="hideNav()" id="closeSidenav">&times;</a>
+        <a class="aSidenav" href="home"><label>Home</label></a>
+        <a class="aSidenav" href="homework"><label>Homeworks</label></a>
+        <a class="aSidenav" href="#"><label>Feedback</label></a>
+        <a class="aSidenav" href="#"><label>Holidays</label></a>
+        <a class="aSidenav" href="logout"><label>Logout</label></a>
+      </div>
+</body>
+
+</html>

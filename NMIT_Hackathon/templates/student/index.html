@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+
+    body{
+        background-color: rgb(224, 224, 224);
+    }
+
+    #HeadSpace{
+        background-color: rgb(3, 87, 212);
+        height: 40vh;
+        margin-bottom: 20px;
+        align-items: center;
+    }
+
+    #HeadSpace img{ 
+        border-radius: 50%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 20%;
+        height: auto;
+    }
+
+    #mySidenav{
+        width: 0;
+        min-height: 100vh;
+        height: 100%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #2C74B3;
+        overflow-x: hidden;
+        transition: 0.5s;
+    }
+
+    .sidenav a{
+        padding: 15px 0px 15px 0px;
+        display: block;
+        font-size: 250%;
+        width: 100%;
+        color: #555757;
+        transition: 0.3s;
+        text-decoration: none;
+        margin-left: 7px;
+    }
+
+    .sideNav a:hover{
+        color: rgb(219, 216, 216);
+    }
+
+    .aSidenav{
+        text-align: center;
+        font-size: 50px;
+    }
+
+    #main_content button{
+      height: 40px;
+    }
+
+    #details{
+        width: 100%;
+        text-align: center;
+    }
+
+    #details_div{
+        text-align: justify;
+        display: inline-block;
+    }
+
+    #details_div label{
+        display: inline-block;
+        font-size: 40px;
+        margin-bottom: 50px;
+    }
+
+    .preset_label{
+        font-weight: 800;
+    }
+
+    .generated{
+        font-weight: 500;
+    }
+
+    #sidenav_menu{
+        position: fixed;
+        left: 10;
+        top: 10;
+        width: 3%;
+        padding: 5px;
+        border-radius: 10%;
+    }
+
+    #main_content{
+      background-color: #EFF5F5;
+      min-height: 100vh;
+      height: 100%;
+      width: 100%;
+      text-align: center;
+    }
+
+
+</style>
+
+<script>
+    function showNav() {
+      document.getElementById("mySidenav").style.width = "100%";
+    }
+
+    function hideNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+      
+</script>
+
+<body>
+    <img src="{% static 'icons/menu.png' %}" id="sidenav_menu" onclick="showNav()">
+    <div id="HeadSpace">
+        <img src="{% static 'profile_pics/default.jpg' %}" id='profilePic'>
+    </div>
+
+    <section id="details">
+        <div id="details_div">
+            {% if request.user.is_authenticated %}
+                <label class="preset_label">Student Name: </label>    <label class="generated">{{ user.std_name }}</label><br>
+                <label class="preset_label">Reg No: </label>     <label class="generated">{{ user.std_reg_no }}</label><br>
+                <label class="preset_label">Semester: </label>    <label class="generated">{{ user.std_sem}}</label><br>
+                <label class="preset_label">Department: </label>    <label class="generated">{{ user.std_dept }}</label><br>
+                <label class="preset_label">College E-Mail: </label>    <label class="generated">{{ user.std_email }}</label><br>
+                <label class="preset_label">Total Classses Attended: </label>    <label class="generated">{{ user.std_class_attended }} of {{ taken }}</label><br>
+            {% endif %}
+        </div>
+    </section>
+    
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" id="closebtn" onclick="hideNav()" id="closeSidenav">&times;</a>
+        <a class="aSidenav" href="homework"><label>Homeworks</label></a>
+        <a class="aSidenav" href="alert"><label>Alertss</label></a>
+        <a class="aSidenav" href="contact_teachers"><label>Contact Teacher</label></a>
+        <a class="aSidenav" href="logout"><label>Logout</label></a>
+      </div>
+</body>
+</html>

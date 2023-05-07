@@ -1,0 +1,59 @@
+<html>
+    <body>
+        <h2>Create Account</h2>
+
+        <form method="post" action="add_std">
+            {% csrf_token %}
+            <label> Studnet Name</label>
+            <input type="text" name="username" id="username" placeholder="Username">
+            <br>
+
+            <label> Password </label>
+            <input type="password" name="password" id="password" placeholder="Password">
+            <br>
+
+            <label> acc type </label>
+            <input type="text" name="group" id="group" placeholder="Account type">
+            <br>
+
+            <label> Student Reg. No. </label>
+            <input type="text" name="reg" id="reg" placeholder="Registration No.">
+            <br>
+
+            <label> Department </label>
+                <input type="radio" id="cs" name="dept" value="CSE">
+                <label for="cs">Computer Science</label>
+                <input type="radio" id="ec" name="dept" value="ECE">
+                <label for="ec">Electronics and communications</label>
+                <input type="radio" id="me" name="dept" value="ME">
+                <label for="me">Mechanical</label>
+                <input type="radio" id="at" name="dept" value="AT">
+                <label for="at">Automobile</label>
+            <br>
+
+            <label> Semester </label>
+                <input type="radio" id="1" name="sem" value="1">
+                <label for="1">1</label>
+                <input type="radio" id="2" name="sem" value="2">
+                <label for="2">2</label>
+                <input type="radio" id="3" name="sem" value="3">
+                <label for="3">3</label>
+                <input type="radio" id="4" name="sem" value="4">
+                <label for="4">4</label>
+                <input type="radio" id="5" name="sem" value="5">
+                <label for="5">5</label>
+                <input type="radio" id="6" name="sem" value="6">
+                <label for="6">6</label>
+            <br>
+
+            <label> E-main ID </label>
+            <input type="text" name="email" id="email" placeholder="xyz@email.com.">
+            <br>
+
+            <label> Phone Number </label>
+            <input type="text" name="phone_no" id="phone" placeholder="0123456789">
+            <br><br>
+            <input type="submit", value="Create">
+        </form>
+    </body>
+</html>

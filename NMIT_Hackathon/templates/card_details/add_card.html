@@ -1,0 +1,12 @@
+<html>
+    <body>
+        <form method="POST", action="add_card">
+            {% csrf_token %}
+            <label for="card_no">Card number: {{ card_id }}</label><br>
+
+            <label for="holder_name">Card Holder Name</label>
+            <input type="text" placeholder="Holder" name="holder_name'">
+            <input type="submit" value="Add Card">
+        </form>
+    </body>
+</html>

@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                font-family: "Lato", sans-serif;
+                justify-content: center;
+            }
+            .div_container{
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+            }
+            .hw_div{
+                width: 80%;
+                height: 100%;
+                justify-content: center;
+            }
+            .main_div{
+                background-color: #EFF5F5;
+                margin: 15px;
+                height: fit-content;
+                padding: 5px;
+                border-radius: 7px;
+                outline: solid 1px black;
+                position: static;
+            }
+
+            #hw_heading{
+                font-size: 150%;
+                margin: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="div_container">
+            <div class="hw_div">
+                {% for homework in homeworks %}
+                    <div class="main_div">
+                        <p id="hw_heading">{{ homework.hw_title }}</p>
+                        <p>{{ homework.hw_desc }}</p>
+                    </div>
+                {% endfor %}
+        </div>
+
+    </body>
+</html>

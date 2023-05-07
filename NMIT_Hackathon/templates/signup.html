@@ -1,0 +1,22 @@
+<html>
+    <body>
+        <h2>Create Account</h2>
+
+        <form method="post" action="SignUp">
+            {% csrf_token %}
+            <label> Username </label>
+            <input type="text" name="username" id="username" placeholder="Username">
+            <br>
+
+            <label> Password </label>
+            <input type="password" name="password" id="password" placeholder="Password">
+            <br>
+
+            <label> acc type </label>
+            <input type="text" name="group" id="group" placeholder="Confirm">
+            <br><br>
+
+            <button type="submit">Create Account</button>
+        </form>
+    </body>
+</html>

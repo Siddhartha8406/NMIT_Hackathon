@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            body {
+                font-family: "Lato", sans-serif;
+                justify-content: center;
+                font-size: xx-large;
+                background-color: rgba(44, 112, 184, 0.641);
+            }
+
+            #hw_div{
+                margin-top: 20px;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+            }
+            .main_div{
+                background-color: #EFF5F5;
+                margin: 15px;
+                height: fit-content;
+                padding: 5px;
+                border-radius: 7px;
+                outline: solid 1px black;
+                position: static;
+            }
+
+            #title{
+                width: 500px;
+                font-size: x-large;
+            }
+            
+            select{
+                font-size: x-large;
+            }
+
+            #content{
+                width: 500;
+                height: 12vh;
+                font-size: x-large;
+            }
+
+            button{
+                font-size: large;
+                margin-top: 10px;
+                padding: 4px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="hw_div">
+            <form action="send-hw" method="post">
+                {% csrf_token %}
+                <label for="title">Heading</label><br>
+                <input type="text" name="hw_title" id="title" placeholder="Heading"><br>
+    
+                <label for="content">Content</label><br>
+                <textarea name="hw_content" id="content" placeholder="Body"></textarea><br>
+
+                <label for="sem">Semester</label><br>
+                <select name="hw_sem" id="semester">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select><br>
+
+                <label for="dept">Department</label><br>
+                <select name="hw_dept" id="dept">
+                    <option value="CSE">CSE</option>
+                    <option value="ECE">ECE</option>
+                    <option value="ME">ME</option>
+                    <option value="AT">AT</option>
+                </select>
+
+                <br>
+
+                <button type="submit">Send Notification</button>
+            </form>
+        </div>
+</html>

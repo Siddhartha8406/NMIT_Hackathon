@@ -1,0 +1,84 @@
+{% load static %}
+<html>
+    <head>
+        <meta name="viewport", content="width=device-width, intial-scale=1.0">
+    </head>
+    <style>
+        
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .main-content {
+            background-image: url("{% static 'images/main.jpg' %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 100vh;
+            width: 100%;
+            position: relative;
+        }
+        .login_form{
+            position: absolute;
+            width: 90%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 150%;
+        }
+        form{
+            position: absolute;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            padding: 15px;
+            background: rgba(250, 250, 250, 0.414);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+        }
+        
+        .login_form  h1{
+            text-align: center;
+            font-size: 180%;
+            font-style: sans-serif;
+        }
+
+        input[type="text"]{
+            font-size: 100%;
+            padding: 5px 5px;
+            margin: 8px 0;
+        }
+
+        input[type="password"]{
+            font-size: 100%;
+            padding: 5px 5px;
+            margin: 8px 0;
+        }
+        
+        input[type="submit"]{
+            font-size: 80%;
+            width: 100%;
+            padding: 5px 5px;
+            margin: 8px 0;
+            background: rgb(43, 68, 114);
+            border: 1px solid ;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover{
+            background: rgb(188, 194, 205);
+        }
+    </style>
+    <body>
+        <section class="main-content">
+            <div class="login_form">
+                    <form method="post" action="login">
+                        {% csrf_token %}
+                        <h1>Login</h1>
+                        <input type="text", placeholder="Username" name="username"><br>
+                        <input type="password", placeholder="Password" name="password"><br>
+                        <input type="submit", value="Login">
+                    </form>
+            </div>
+        </section>
+    </body>
+</html>
